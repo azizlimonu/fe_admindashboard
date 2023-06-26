@@ -97,7 +97,7 @@ const Sidebar = ({
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
-  isMobile,
+  isNotMobile,
 }) => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
@@ -122,7 +122,7 @@ const Sidebar = ({
               color: theme.palette.secondary[200],
               backgroundColor: theme.palette.background.alt,
               boxSixing: "border-box",
-              borderWidth: isMobile ? 0 : "2px",
+              borderWidth: isNotMobile ? 0 : "2px",
               width: drawerWidth,
             },
           }}
@@ -140,7 +140,7 @@ const Sidebar = ({
                   </Typography>
                 </Box>
 
-                {!isMobile && (
+                {!isNotMobile && (
                   <IconButton
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                   >

@@ -7,22 +7,22 @@ import { Outlet } from 'react-router-dom';
 import { useGetUserQuery } from 'state/api';
 
 const Layout = () => {
-  const isMobile = useMediaQuery("(min-width:600px");
+  const isNotMobile = useMediaQuery("(min-width:600px");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const userId = useSelector((state) => state.global.userId);
   const { data } = useGetUserQuery(userId);
 
-  console.log("user id", data);
+  // console.log("user id", data);
 
   return (
     <Box
-      display={isMobile ? "flex" : "block"}
+      display={isNotMobile ? "flex" : "block"}
       width="100%"
       height="100%"
     >
       <Sidebar
         user={data || {}}
-        isMobile={isMobile}
+        isNotMobile={isNotMobile}
         drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
