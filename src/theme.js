@@ -64,11 +64,11 @@ export const tokensLight = reversedTokens(tokensDark);
 // Setting the MUI theme
 export const themeSettings = (mode) => {
   return {
-    pallete: {
+    palette: {
       mode: mode,
       ...(mode === "dark"
         ? {
-          // Pallete values For Dark Mode
+          // palette values for dark mode
           primary: {
             ...tokensDark.primary,
             main: tokensDark.primary[400],
@@ -86,8 +86,9 @@ export const themeSettings = (mode) => {
             default: tokensDark.primary[600],
             alt: tokensDark.primary[500],
           },
-        } : {
-          // Pallete values For Light Mode
+        }
+        : {
+          // palette values for light mode
           primary: {
             ...tokensLight.primary,
             main: tokensDark.grey[50],
@@ -106,7 +107,7 @@ export const themeSettings = (mode) => {
             default: tokensDark.grey[0],
             alt: tokensDark.grey[50],
           },
-        })
+        }),
     },
     typography: {
       fontFamily: ["Inter", "sans-serif"].join(","),
@@ -136,5 +137,5 @@ export const themeSettings = (mode) => {
         fontSize: 14,
       },
     },
-  }
+  };
 };
