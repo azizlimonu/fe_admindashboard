@@ -1,13 +1,12 @@
-import { Box, useTheme, useThemeProps } from '@mui/material'
-import Header from 'components/Header';
-import React, { useMemo } from 'react'
-import { useGetSalesQuery } from 'state/api';
+import React, { useMemo } from "react";
+import { Box, useTheme } from "@mui/material";
+import Header from "components/Header";
 import { ResponsiveLine } from "@nivo/line";
+import { useGetSalesQuery } from "state/api";
 
 const Monthly = () => {
+  const { data } = useGetSalesQuery();
   const theme = useTheme();
-
-  const { data, isLoading } = useGetSalesQuery();
 
   const [formattedData] = useMemo(() => {
     if (!data) return [];
@@ -41,12 +40,9 @@ const Monthly = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="MONTHLY SALES" subtitle="See Your Monthly Sales" />
-
-      <Box heigh="75vh">
-        {!data || isLoading ? (
-          <p>Loading</p>
-        ) : (
+      <Header title="MONTHLY SALES" subtitle="Chart of monthlysales" />
+      <Box height="75vh">
+        {data ? (
           <ResponsiveLine
             data={formattedData}
             theme={{
@@ -149,10 +145,12 @@ const Monthly = () => {
               },
             ]}
           />
+        ) : (
+          <>Loading...</>
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Monthly
+export default Monthly;
